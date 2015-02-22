@@ -8,6 +8,6 @@
  */
 public interface IFactory 
 {
-	public boolean register();
-	public boolean unregister();
+	public boolean register(String typeOfAircraft, IAircraft functor);
+	public boolean unregister(String typeOfAircraft);
 }
