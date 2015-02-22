@@ -30,7 +30,7 @@ public class MedicalHelicopter extends Helicopter {
 	 * @see Helicopter#requestPermissionToFly()
 	 */
 	@Override
-	public boolean requestPermissionToFly() {
+	public boolean requestPermissionToFly(Airport airport, Lane lane) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -39,7 +39,7 @@ public class MedicalHelicopter extends Helicopter {
 	 * @see Helicopter#requestPermissionToLand()
 	 */
 	@Override
-	public boolean requestPermissionToLand() {
+	public boolean requestPermissionToLand(Airport airport, Lane lane) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -27,12 +27,12 @@ public abstract class Helicopter implements IAircraft
 	 * @see Aircraft#requestPermissionToFly()
 	 */
 	@Override
-	public abstract boolean requestPermissionToFly();
+	public abstract boolean requestPermissionToFly(Airport airport, Lane lane);
 
 	/* (non-Javadoc)
 	 * @see Aircraft#requestPermissionToLand()
 	 */
 	@Override
-	public abstract boolean requestPermissionToLand();
+	public abstract boolean requestPermissionToLand(Airport airport, Lane lane);
 
 }
