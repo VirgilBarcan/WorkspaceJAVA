@@ -9,7 +9,7 @@
 public abstract class Plane implements IAircraft 
 {
 
-	private String planeID;
+	protected String planeID;
 	
 	/* (non-Javadoc)
 	 * @see Aircraft#save()

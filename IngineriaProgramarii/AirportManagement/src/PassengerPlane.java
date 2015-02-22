@@ -6,8 +6,19 @@
  * @author Virgil Barcan
  *
  */
-public class PassengerPlane extends Plane {
+public class PassengerPlane extends Plane 
+{
 
+	public static Plane getPassengerPlane()
+	{
+		return new PassengerPlane();
+	}
+	
+	private PassengerPlane()
+	{
+		planeID = new String();
+	}
+	
 	/* (non-Javadoc)
 	 * @see Plane#save()
 	 */

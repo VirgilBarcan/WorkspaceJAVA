@@ -9,7 +9,7 @@
 public abstract class Helicopter implements IAircraft 
 {
 
-	private String helicopterID;
+	protected String helicopterID;
 	
 	/* (non-Javadoc)
 	 * @see Aircraft#save()
