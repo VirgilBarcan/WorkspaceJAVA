@@ -1,0 +1,38 @@
+/**
+ * 
+ */
+
+/**
+ * @author Virgil Barcan
+ *
+ */
+public abstract class Helicopter implements IAircraft 
+{
+
+	private String helicopterID;
+	
+	/* (non-Javadoc)
+	 * @see Aircraft#save()
+	 */
+	@Override
+	public abstract void save();
+
+	/* (non-Javadoc)
+	 * @see Aircraft#load()
+	 */
+	@Override
+	public abstract void load();
+	
+	/* (non-Javadoc)
+	 * @see Aircraft#requestPermissionToFly()
+	 */
+	@Override
+	public abstract boolean requestPermissionToFly();
+
+	/* (non-Javadoc)
+	 * @see Aircraft#requestPermissionToLand()
+	 */
+	@Override
+	public abstract boolean requestPermissionToLand();
+
+}
