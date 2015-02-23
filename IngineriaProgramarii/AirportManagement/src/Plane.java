@@ -6,10 +6,11 @@
  * @author Virgil Barcan
  *
  */
-public abstract class Plane implements IAircraft 
+public abstract class Plane implements IAircraft
 {
 
 	protected String planeID;
+	protected String planeType;
 	
 	/* (non-Javadoc)
 	 * @see Aircraft#save()
@@ -35,4 +36,15 @@ public abstract class Plane implements IAircraft
 	@Override
 	public abstract boolean requestPermissionToLand(Airport airport, Lane lane);
 
+	public String getPlaneType()
+	{
+		return planeType;
+	}
+
+
+	public String getPlaneID()
+	{
+		return planeID;
+	}
+	
 }
