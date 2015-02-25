@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <airport>
-  <hangar id="1">
-    <capacity>0</capacity>
-    <planesInside>0</planesInside>
-  </hangar>
+  <hangars size="1">
+    <hangar id="0">
+      <capacity>0</capacity>
+      <aircrafts size="0" />
+    </hangar>
+  </hangars>
 </airport>
 

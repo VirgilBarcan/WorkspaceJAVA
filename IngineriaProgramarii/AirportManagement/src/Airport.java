@@ -41,18 +41,24 @@ public class Airport
 				Element airport = new Element("airport");
 				Document doc = new Document(airport);
 				doc.setRootElement(airport);
-				 
+				
+				Element hangarsTag = new Element("hangars");
+				hangarsTag.setAttribute(new Attribute("size", Integer.toString(hangars.size())));
+				doc.getRootElement().addContent(hangarsTag);
+				
 				int id = 1;
 				for(Hangar h : hangars)
 				{
 					Element hangar = new Element("hangar");
-					hangar.setAttribute(new Attribute("id", Integer.toString(id)));
-					hangar.addContent(new Element("capacity").setText(Integer.toString(h.getCapacity())));
-					hangar.addContent(new Element("planesInside").setText(Integer.toString(h.getNoOfPlanesInside())));
+					//hangar.setAttribute(new Attribute("id", Integer.toString(id)));
+					//hangar.addContent(new Element("capacity").setText(Integer.toString(h.getCapacity())));
+					//hangar.addContent(new Element("planesInside").setText(Integer.toString(h.getNoOfPlanesInside())));
+					
+					h.save(hangar);
 					
 					// TODO -- add rest elements ( helicopters, planes )					
 					
-					doc.getRootElement().addContent(hangar);
+					hangarsTag.addContent(hangar);
 					++id;
 				}
 				
