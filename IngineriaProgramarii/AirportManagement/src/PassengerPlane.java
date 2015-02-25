@@ -1,14 +1,24 @@
+import java.io.File;
+
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * 
  */
 
 /**
- * @author Virgil Barcan
+ * @author Virgil Barcan & Morosanu Dan
  *
  */
+
+@XmlRootElement
 public class PassengerPlane extends Plane 
 {
-
 	public static Plane getPassengerPlane()
 	{
 		return new PassengerPlane();
@@ -16,15 +26,12 @@ public class PassengerPlane extends Plane
 	
 	private PassengerPlane()
 	{
-		planeID = new String();
+		setPlaneType("Passenger Plane");
 	}
 	
-	/* (non-Javadoc)
-	 * @see Plane#save()
-	 */
 	@Override
-	public void save() {
-		// TODO Auto-generated method stub
+	public void save() 
+	{
 
 	}
 	
@@ -32,9 +39,9 @@ public class PassengerPlane extends Plane
 	 * @see Plane#load()
 	 */
 	@Override
-	public void load() {
-		// TODO Auto-generated method stub
-
+	public void load() 
+	{
+		
 	}
 
 	/* (non-Javadoc)

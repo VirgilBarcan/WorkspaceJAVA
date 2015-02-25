@@ -10,10 +10,10 @@ import org.reflections.Reflections;
  */
 
 /**
- * @author Virgil Barcan
+ * @author Virgil Barcan & Morosanu Dan
  *
  */
-public class PlaneFactory implements IFactory 
+public class PlaneFactory implements IFactory  
 {
 
 	//the pairs (nameOfObject, constructorOfObject)
@@ -45,7 +45,7 @@ public class PlaneFactory implements IFactory
 		
 		String packageName = Plane.class.getPackage().getName();
 		
-		Reflections reflections = new Reflections(packageName);
+		Reflections reflections = new Reflections(packageName); 
 		
 		Set<Class<? extends Plane>> allPlanes = reflections.getSubTypesOf(Plane.class);
 		

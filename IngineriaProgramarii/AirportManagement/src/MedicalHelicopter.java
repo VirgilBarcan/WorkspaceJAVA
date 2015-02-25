@@ -3,7 +3,7 @@
  */
 
 /**
- * @author Virgil Barcan
+ * @author Virgil Barcan & Morosanu Dan
  *
  */
 public class MedicalHelicopter extends Helicopter {

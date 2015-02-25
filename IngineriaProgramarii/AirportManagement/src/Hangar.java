@@ -1,11 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * 
- */
-
-/**
- * @author Virgil Barcan
+ * @author Virgil Barcan & Morosanu Dan
  *
  */
 public class Hangar 
@@ -43,7 +39,7 @@ public class Hangar
 		return capacity;
 	}
 	
-	private void setCapacity(int capacity)
+	public void setCapacity(int capacity)
 	{
 		this.capacity = capacity;
 	}
@@ -53,7 +49,7 @@ public class Hangar
 		return noOfPlanesInside;
 	}
 	
-	private void setNoOfPlanesInside(int noOfPlanesInside)
+	public void setNoOfPlanesInside(int noOfPlanesInside)
 	{
 		this.noOfPlanesInside = noOfPlanesInside;
 	}

@@ -9,7 +9,7 @@ import org.reflections.Reflections;
  */
 
 /**
- * @author Virgil Barcan
+ * @author Virgil Barcan & Morosanu Dan
  *
  */
 public class HelicopterFactory implements IFactory 

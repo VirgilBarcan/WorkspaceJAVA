@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 
 /**
- * @author Virgil Barcan
+ * @author Virgil Barcan & Morosanu Dan
  *
  */
 public class Lane 
