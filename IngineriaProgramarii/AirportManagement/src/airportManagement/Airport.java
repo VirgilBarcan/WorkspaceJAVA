@@ -1,3 +1,4 @@
+package airportManagement;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
@@ -30,11 +31,13 @@ public class Airport
 	
 	public void save()
 	{
+		
 		Hangar hh = new Hangar();
 		hangars.add(hh);
 		
 		Lane ll = new Lane();
 		lanes.add(ll);
+		
 		
 		File file = new File("db.xml");
 		//if(file.isFile()) // Check if exists & is file
@@ -49,7 +52,6 @@ public class Airport
 				hangarsTag.setAttribute(new Attribute("size", Integer.toString(hangars.size())));
 				doc.getRootElement().addContent(hangarsTag);
 				
-				int id = 1;
 				for(Hangar h : hangars)
 				{
 					Element hangar = new Element("hangar");
@@ -60,14 +62,12 @@ public class Airport
 					h.save(hangar);				
 					
 					hangarsTag.addContent(hangar);
-					++id;
 				}
 
 				Element lanesTag = new Element("lanes");
 				lanesTag.setAttribute(new Attribute("size", Integer.toString(lanes.size())));
 				doc.getRootElement().addContent(lanesTag);
 				
-				id = 1;
 				for(Lane l : lanes)
 				{
 					Element lane = new Element("lane");
@@ -75,7 +75,6 @@ public class Airport
 					l.save(lane);
 					
 					lanesTag.addContent(lane);
-					++id;
 				}
 				
 				XMLOutputter xmlOutput = new XMLOutputter();
@@ -108,24 +107,31 @@ public class Airport
 			{	 
 				Element node = (Element) list.get(i);
 				
-				if(node.getName().equals("hangar"))
+				if(node.getName().equals("hangars"))
 				{
-					Hangar h = new Hangar();
+					List<?> hangarsList = node.getChildren();
 					
-					h.setCapacity(Integer.parseInt(node.getChildText("capacity")));
-					h.setNoOfPlanesInside(Integer.parseInt(node.getChildText("planesInside")));
-					
-					// TODO -- add rest elements ( helicopters, planes )
-					
-					hangars.add(h);
+					for(int j = 0; j < hangarsList.size(); ++j)
+					{
+						Element hangarNode = (Element) hangarsList.get(j); // Get Hangar
+						
+						Hangar h = new Hangar();						
+						h.load(hangarNode);						
+						hangars.add(h);
+					}
 				}
-				else if(node.getName().equals("lane"))
+				else if(node.getName().equals("lanes"))
 				{
-					Lane l = new Lane();
-
-					// TODO -- add rest elements ( helicopters, planes )
+					List<?> lanesList = node.getChildren();
 					
-					lanes.add(l);
+					for(int j = 0; j < lanesList.size(); ++j)
+					{
+						Element laneNode = (Element) lanesList.get(j); // Get Lane
+						
+						Lane l = new Lane();						
+						l.load(laneNode);						
+						lanes.add(l);
+					}
 				}
 			}
  

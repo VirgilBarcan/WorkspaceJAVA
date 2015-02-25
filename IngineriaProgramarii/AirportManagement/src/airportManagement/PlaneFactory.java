@@ -1,24 +1,24 @@
-import java.util.ArrayList;
+package airportManagement;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import org.reflections.Reflections;
 
 /**
- * 
- */
-
-/**
  * @author Virgil Barcan & Morosanu Dan
  *
  */
+
 public class PlaneFactory implements IFactory  
 {
-
-	//the pairs (nameOfObject, constructorOfObject)
-	private Map<String, IAircraft> callbacks;
-	private ArrayList<String> planeTypes;
+	private static PlaneFactory instance = null;
+	
+	public static PlaneFactory getInstance()
+	{
+		return instance != null ? instance : new PlaneFactory(); 
+	}
+	
+	private PlaneFactory() { }
 	
 	/* (non-Javadoc)
 	 * @see IFactory#register()
@@ -43,8 +43,9 @@ public class PlaneFactory implements IFactory
 	public Plane createPlane(String planeType)
 	{	
 		String packageName = Plane.class.getPackage().getName();
+		System.out.println("Package Name: " + packageName);
 		
-		Reflections reflections = new Reflections(packageName); 
+		Reflections reflections = new Reflections(packageName); 		
 		
 		Set<Class<? extends Plane>> allPlanes = reflections.getSubTypesOf(Plane.class);
 		

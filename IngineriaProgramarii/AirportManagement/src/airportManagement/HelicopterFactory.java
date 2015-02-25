@@ -1,21 +1,23 @@
+package airportManagement;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import org.reflections.Reflections;
-
-/**
- * 
- */
 
 /**
  * @author Virgil Barcan & Morosanu Dan
  *
  */
 public class HelicopterFactory implements IFactory 
-{
-
-	private Map<String, IAircraft> callbacks;
+{	
+	private static HelicopterFactory instance = null;
+	
+	public static HelicopterFactory getInstance()
+	{
+		return instance != null ? instance : new HelicopterFactory(); 
+	}
+	
+	private HelicopterFactory() { }
 	
 	/* (non-Javadoc)
 	 * @see IFactory#register()
@@ -67,6 +69,5 @@ public class HelicopterFactory implements IFactory
 		
 		return null;
 	}
-
 	
 }

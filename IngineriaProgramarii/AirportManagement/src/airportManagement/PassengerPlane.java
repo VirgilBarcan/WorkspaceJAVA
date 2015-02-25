@@ -1,9 +1,12 @@
-import java.io.File;
-
+package airportManagement;
 /**
  * @author Virgil Barcan & Morosanu Dan
  *
  */
+
+import org.jdom.Attribute;
+import org.jdom.DataConversionException;
+import org.jdom.Element;
 
 public class PassengerPlane extends Plane 
 {
@@ -30,7 +33,7 @@ public class PassengerPlane extends Plane
 		return numberOfSeats;
 	}	
 	
-	 public static Plane getPassengerPlane()
+	public static Plane getPassengerPlane()
 	{
 		return new PassengerPlane();
 	}
@@ -41,18 +44,27 @@ public class PassengerPlane extends Plane
 	}
 	
 	@Override
-	public void save() 
+	public void save(Element element) 
 	{
-
+		Element aircraftsTag = new Element("PassengerPlane");
+		aircraftsTag.setAttribute(new Attribute("noOfPassengers", Integer.toString(this.getNumberOfPassengers())));
+		aircraftsTag.setAttribute(new Attribute("noOfSeats", Integer.toString(this.getNumberOfSeats())));
+		
+		element.addContent(aircraftsTag);
 	}
 	
-	/* (non-Javadoc)
-	 * @see Plane#load()
-	 */
 	@Override
-	public void load() 
+	public void load(Element element) 
 	{
-		
+		try 
+		{
+			this.setNumberOfPassengers(element.getAttribute("noOfPassengers").getIntValue());
+			this.setNumberOfSeats(element.getAttribute("noOfSeats").getIntValue());
+		} 
+		catch (DataConversionException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/* (non-Javadoc)

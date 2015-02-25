@@ -1,15 +1,12 @@
+package airportManagement;
 /**
  * 
 @author Virgil Barcan & Morosanu Dan
  *
  */
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import org.jdom.Element;
 
-
-@XmlRootElement
 public abstract class Plane implements IAircraft
 {
 	protected String planeID;
@@ -19,13 +16,13 @@ public abstract class Plane implements IAircraft
 	 * @see Aircraft#save()
 	 */
 	@Override
-	public abstract void save();
+	public abstract void save(Element element);
 
 	/* (non-Javadoc)
 	 * @see Aircraft#load()
 	 */
 	@Override
-	public abstract void load();
+	public abstract void load(Element element);
 	
 	/* (non-Javadoc)
 	 * @see Aircraft#requestPermissionToFly()
@@ -40,18 +37,15 @@ public abstract class Plane implements IAircraft
 	public abstract boolean requestPermissionToLand(Airport airport, Lane lane);
 
 	
-	@XmlElement
 	public void setPlaneType(String planeType)
 	{
 		this.planeType = planeType;
 	}
 	
-	@XmlElement
 	public void setPlaneID(String planeID)
 	{
 		this.planeID = planeID;
-	}
-	
+	}	
 	
 	public String getPlaneType()
 	{

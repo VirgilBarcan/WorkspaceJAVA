@@ -1,14 +1,11 @@
+package airportManagement;
 /**
  * @author Virgil Barcan & Morosanu Dan
  *
  */
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import org.jdom.Element;
 
-
-@XmlRootElement
 public abstract class Helicopter implements IAircraft 
 {
 	protected String helicopterID;
@@ -18,13 +15,13 @@ public abstract class Helicopter implements IAircraft
 	 * @see Aircraft#save()
 	 */
 	@Override
-	public abstract void save();
+	public abstract void save(Element element);
 
 	/* (non-Javadoc)
 	 * @see Aircraft#load()
 	 */
 	@Override
-	public abstract void load();
+	public abstract void load(Element element);
 	
 	/* (non-Javadoc)
 	 * @see Aircraft#requestPermissionToFly()
@@ -39,13 +36,11 @@ public abstract class Helicopter implements IAircraft
 	public abstract boolean requestPermissionToLand(Airport airport, Lane lane);
 
 	
-	@XmlElement
 	public void setHelicopterType(String helicopterType)
 	{
 		this.helicopterType = helicopterType;
 	}
 	
-	@XmlElement
 	public void setHelicopterID(String helicopterID)
 	{
 		this.helicopterID = helicopterID;

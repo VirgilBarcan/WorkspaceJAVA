@@ -4,15 +4,30 @@
     <hangar id="0">
       <capacity>0</capacity>
       <aircrafts size="0">
-        <aircraft />
+        <PassengerPlane noOfPassengers="0" noOfSeats="0" />
+        <MilitaryPlane noOfGuns="0" noOfBombs="0" />
+        <MedicalPlane noOfMedicalKits="0" noOfPortableBeds="0" />
+        <MilitaryHelicopter noOfGuns="0" />
+        <MedicalHelicopter noOfMedicalKits="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
       </aircrafts>
     </hangar>
   </hangars>
   <lanes size="1">
     <lane id="0">
       <isClear>true</isClear>
-      <aircrafts size="1">
-        <aircraft />
+      <aircrafts>
+        <PassengerPlane noOfPassengers="0" noOfSeats="0" />
+        <MilitaryPlane noOfGuns="0" noOfBombs="0" />
+        <MedicalPlane noOfMedicalKits="0" noOfPortableBeds="0" />
+        <MilitaryHelicopter noOfGuns="0" />
+        <MedicalHelicopter noOfMedicalKits="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
       </aircrafts>
     </lane>
   </lanes>

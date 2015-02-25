@@ -1,15 +1,16 @@
-/**
- * 
- */
-
+package airportManagement;
 /**
  * @author Virgil Barcan & Morosanu Dan
  *
  */
+
+import org.jdom.Attribute;
+import org.jdom.DataConversionException;
+import org.jdom.Element;
+
 public class MedicalHelicopter extends Helicopter 
 {
 	private int numberOfMedicalKits;
-	private int numberOfPortableBeds; 
 	
 	public void setNumberOfMedicalKits(int kits)
 	{
@@ -21,32 +22,36 @@ public class MedicalHelicopter extends Helicopter
 		return numberOfMedicalKits;
 	}
 	
-	public void setNumberOfPortableBeds(int beds)
+	public static Helicopter getMedicalHelicopter()
 	{
-		numberOfPortableBeds = beds;
+		return new MedicalHelicopter();
 	}
 	
-	public int getNumberOfPortableBeds()
+	private MedicalHelicopter()
 	{
-		return numberOfPortableBeds;
-	}
+		setHelicopterType("Medical Helicopter");
+	}	
 	
-	/* (non-Javadoc)
-	 * @see Helicopter#save()
-	 */
 	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-
+	public void save(Element element) 
+	{
+		Element aircraftsTag = new Element("MedicalHelicopter");
+		aircraftsTag.setAttribute(new Attribute("noOfMedicalKits", Integer.toString(this.getNumberOfMedicalKits())));
+		
+		element.addContent(aircraftsTag);
 	}
 
-	/* (non-Javadoc)
-	 * @see Helicopter#load()
-	 */
 	@Override
-	public void load() {
-		// TODO Auto-generated method stub
-
+	public void load(Element element) 
+	{
+		try 
+		{
+			this.setNumberOfMedicalKits(element.getAttribute("noOfMedicalKits").getIntValue());
+		} 
+		catch (DataConversionException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	/* (non-Javadoc)

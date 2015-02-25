@@ -1,11 +1,13 @@
-/**
- * 
- */
-
+package airportManagement;
 /**
  * @author Virgil Barcan & Morosanu Dan
  *
  */
+
+import org.jdom.Attribute;
+import org.jdom.DataConversionException;
+import org.jdom.Element;
+
 public class MedicalPlane extends Plane 
 {
 	private int numberOfMedicalKits;
@@ -31,24 +33,38 @@ public class MedicalPlane extends Plane
 		return numberOfPortableBeds;
 	}	
 	
-	/* (non-Javadoc)
-	 * @see Plane#save()
-	 */
-	@Override
-	public void save() 
+	public static Plane getMedicalPlane()
 	{
-		// TODO Auto-generated method stub
-
+		return new MedicalPlane();
+	}	
+	
+	private MedicalPlane()
+	{
+		setPlaneType("Medical Plane");
+	}	
+	
+	@Override
+	public void save(Element element) 
+	{
+		Element aircraftsTag = new Element("MedicalPlane");
+		aircraftsTag.setAttribute(new Attribute("noOfMedicalKits", Integer.toString(this.getNumberOfMedicalKits())));
+		aircraftsTag.setAttribute(new Attribute("noOfPortableBeds", Integer.toString(this.getNumberOfPortableBeds())));
+		
+		element.addContent(aircraftsTag);
 	}
 	
-	/* (non-Javadoc)
-	 * @see Plane#load()
-	 */
 	@Override
-	public void load() 
+	public void load(Element element) 
 	{
-		// TODO Auto-generated method stub
-
+		try 
+		{
+			this.setNumberOfMedicalKits(element.getAttribute("noOfMedicalKits").getIntValue());
+			this.setNumberOfPortableBeds(element.getAttribute("noOfPortableBeds").getIntValue());
+		} 
+		catch (DataConversionException e) 
+		{
+			e.printStackTrace();
+		}	
 	}
 
 	/* (non-Javadoc)
