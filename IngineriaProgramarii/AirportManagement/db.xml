@@ -3,8 +3,18 @@
   <hangars size="1">
     <hangar id="0">
       <capacity>0</capacity>
-      <aircrafts size="0" />
+      <aircrafts size="0">
+        <aircraft />
+      </aircrafts>
     </hangar>
   </hangars>
+  <lanes size="1">
+    <lane id="0">
+      <isClear>true</isClear>
+      <aircrafts size="1">
+        <aircraft />
+      </aircrafts>
+    </lane>
+  </lanes>
 </airport>
 

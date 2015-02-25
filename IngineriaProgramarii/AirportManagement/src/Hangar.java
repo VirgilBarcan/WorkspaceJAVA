@@ -92,8 +92,7 @@ public class Hangar
 		Element aircraftsTag = new Element("aircrafts");
 		aircraftsTag.setAttribute(new Attribute("size", Integer.toString(this.getNoOfPlanesInside())));
 		
-		PlaneFactory pf = new PlaneFactory();
-		PassengerPlane pp = (PassengerPlane) pf.createPlane("PassengerPlane");
+		PassengerPlane pp = (PassengerPlane) PassengerPlane.getPassengerPlane();
 		
 		aircrafts.add(pp);
 		

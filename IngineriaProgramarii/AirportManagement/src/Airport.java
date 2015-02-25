@@ -33,6 +33,9 @@ public class Airport
 		Hangar hh = new Hangar();
 		hangars.add(hh);
 		
+		Lane ll = new Lane();
+		lanes.add(ll);
+		
 		File file = new File("db.xml");
 		//if(file.isFile()) // Check if exists & is file
 		{
@@ -54,23 +57,24 @@ public class Airport
 					//hangar.addContent(new Element("capacity").setText(Integer.toString(h.getCapacity())));
 					//hangar.addContent(new Element("planesInside").setText(Integer.toString(h.getNoOfPlanesInside())));
 					
-					h.save(hangar);
-					
-					// TODO -- add rest elements ( helicopters, planes )					
+					h.save(hangar);				
 					
 					hangarsTag.addContent(hangar);
 					++id;
 				}
+
+				Element lanesTag = new Element("lanes");
+				lanesTag.setAttribute(new Attribute("size", Integer.toString(lanes.size())));
+				doc.getRootElement().addContent(lanesTag);
 				
 				id = 1;
 				for(Lane l : lanes)
 				{
 					Element lane = new Element("lane");
-					lane.setAttribute(new Attribute("id", Integer.toString(id)));
+						
+					l.save(lane);
 					
-					// TODO -- add rest elements ( helicopters, planes )					
-					
-					doc.getRootElement().addContent(lane);
+					lanesTag.addContent(lane);
 					++id;
 				}
 				
