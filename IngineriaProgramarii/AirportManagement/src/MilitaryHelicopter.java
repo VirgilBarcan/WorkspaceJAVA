@@ -6,8 +6,20 @@
  * @author Virgil Barcan & Morosanu Dan
  *
  */
-public class MilitaryHelicopter extends Helicopter {
-
+public class MilitaryHelicopter extends Helicopter 
+{
+	private int numberOfGuns;
+	
+	public void setNumberOfGuns(int guns)
+	{
+		numberOfGuns = guns;
+	}
+	
+	public int getNumberOfGuns()
+	{
+		return numberOfGuns;
+	} 
+	
 	/* (non-Javadoc)
 	 * @see Helicopter#save()
 	 */

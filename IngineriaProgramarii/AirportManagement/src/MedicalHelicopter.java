@@ -6,8 +6,31 @@
  * @author Virgil Barcan & Morosanu Dan
  *
  */
-public class MedicalHelicopter extends Helicopter {
-
+public class MedicalHelicopter extends Helicopter 
+{
+	private int numberOfMedicalKits;
+	private int numberOfPortableBeds; 
+	
+	public void setNumberOfMedicalKits(int kits)
+	{
+		numberOfMedicalKits = kits;
+	}
+	
+	public int getNumberOfMedicalKits()
+	{
+		return numberOfMedicalKits;
+	}
+	
+	public void setNumberOfPortableBeds(int beds)
+	{
+		numberOfPortableBeds = beds;
+	}
+	
+	public int getNumberOfPortableBeds()
+	{
+		return numberOfPortableBeds;
+	}
+	
 	/* (non-Javadoc)
 	 * @see Helicopter#save()
 	 */

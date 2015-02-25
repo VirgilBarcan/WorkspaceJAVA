@@ -1,25 +1,36 @@
 import java.io.File;
 
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.annotation.XmlRootElement;
-
-/**
- * 
- */
-
 /**
  * @author Virgil Barcan & Morosanu Dan
  *
  */
 
-@XmlRootElement
 public class PassengerPlane extends Plane 
 {
-	public static Plane getPassengerPlane()
+	private int numberOfPassengers;
+	private int numberOfSeats;
+	
+	public void setNumberOfPassengers(int passengers)
+	{
+		numberOfPassengers = passengers;
+	}
+	
+	public int getNumberOfPassengers()
+	{
+		return numberOfPassengers;
+	}
+	
+	public void setNumberOfSeats(int seats)
+	{
+		numberOfSeats = seats;
+	}
+	
+	public int getNumberOfSeats()
+	{
+		return numberOfSeats;
+	}	
+	
+	 public static Plane getPassengerPlane()
 	{
 		return new PassengerPlane();
 	}

@@ -8,7 +8,29 @@
  */
 public class MilitaryPlane extends Plane 
 {
-
+	private int numberOfGuns;
+	private int numberOfBombs;
+	
+	public void setNumberOfGuns(int guns)
+	{
+		numberOfGuns = guns;
+	}
+	
+	public int getNumberOfGuns()
+	{
+		return numberOfGuns;
+	}
+	
+	public void setNumberOfBombs(int bombs)
+	{
+		numberOfBombs = bombs;
+	}
+	
+	public int getNumberOfBombs()
+	{
+		return numberOfBombs; 
+	}
+	
 	/* (non-Javadoc)
 	 * @see Plane#save()
 	 */

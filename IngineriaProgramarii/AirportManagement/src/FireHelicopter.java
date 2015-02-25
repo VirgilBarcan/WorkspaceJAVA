@@ -3,13 +3,20 @@
  *
  */
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-public class FireHelicopter extends Helicopter {
-
+public class FireHelicopter extends Helicopter 
+{
+	private int numberOfWaterBuckets; 
+	
+	public void setNumberOfWaterBuckets(int buckets)
+	{
+		numberOfWaterBuckets = buckets;
+	}
+	
+	public int getNumberOfWaterBuckets()
+	{
+		return numberOfWaterBuckets;
+	}
+	
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
