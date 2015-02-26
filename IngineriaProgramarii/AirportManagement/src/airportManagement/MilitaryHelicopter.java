@@ -27,9 +27,9 @@ public class MilitaryHelicopter extends Helicopter
 		return new MilitaryHelicopter();
 	}
 	
-	private MilitaryHelicopter()
+	public MilitaryHelicopter()
 	{
-		setHelicopterType("Military Helicopter");
+		setHelicopterType("MilitaryHelicopter");
 	}
 	
 	@Override

@@ -103,6 +103,7 @@ public class Airport
 			Element rootNode = document.getRootElement();
 			
 			List<?> list = rootNode.getChildren();	 
+			
 			for (int i = 0; i < list.size(); i++) 
 			{	 
 				Element node = (Element) list.get(i);
@@ -114,7 +115,6 @@ public class Airport
 					for(int j = 0; j < hangarsList.size(); ++j)
 					{
 						Element hangarNode = (Element) hangarsList.get(j); // Get Hangar
-						
 						Hangar h = new Hangar();						
 						h.load(hangarNode);						
 						hangars.add(h);
@@ -146,7 +146,7 @@ public class Airport
 		}		
 	}
 		
-	private Airport()
+	public Airport()
 	{
 		Initialize();
 	}

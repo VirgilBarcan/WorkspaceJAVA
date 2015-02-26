@@ -27,9 +27,9 @@ public class FireHelicopter extends Helicopter
 		return new FireHelicopter();
 	}
 	
-	private FireHelicopter()
+	public FireHelicopter()
 	{
-		setHelicopterType("Fire Helicopter");
+		setHelicopterType("FireHelicopter");
 	}	
 	
 	@Override

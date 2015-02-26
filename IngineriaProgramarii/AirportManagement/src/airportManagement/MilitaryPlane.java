@@ -38,9 +38,9 @@ public class MilitaryPlane extends Plane
 		return new MilitaryPlane();
 	}	
 	
-	private MilitaryPlane()
+	public MilitaryPlane()
 	{
-		setPlaneType("Military Plane");
+		setPlaneType("MilitaryPlane");
 	}
 	
 	@Override

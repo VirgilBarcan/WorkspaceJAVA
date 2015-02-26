@@ -15,10 +15,14 @@ public class PlaneFactory implements IFactory
 	
 	public static PlaneFactory getInstance()
 	{
-		return instance != null ? instance : new PlaneFactory(); 
+		if (instance == null) instance = new PlaneFactory();
+		return instance;
+		//return instance != null ? instance : new PlaneFactory(); 
 	}
 	
-	private PlaneFactory() { }
+	private PlaneFactory() {
+		System.out.println("Created PlaneFactory");
+	}
 	
 	/* (non-Javadoc)
 	 * @see IFactory#register()
@@ -43,7 +47,6 @@ public class PlaneFactory implements IFactory
 	public Plane createPlane(String planeType)
 	{	
 		String packageName = Plane.class.getPackage().getName();
-		System.out.println("Package Name: " + packageName);
 		
 		Reflections reflections = new Reflections(packageName); 		
 		
@@ -58,7 +61,7 @@ public class PlaneFactory implements IFactory
 				Plane plane = it.next().newInstance();
 				
 				if (plane.getPlaneType().equals(planeType))
-				{
+				{	
 					return plane;
 				}
 			}

@@ -38,9 +38,9 @@ public class MedicalPlane extends Plane
 		return new MedicalPlane();
 	}	
 	
-	private MedicalPlane()
+	public MedicalPlane()
 	{
-		setPlaneType("Medical Plane");
+		setPlaneType("MedicalPlane");
 	}	
 	
 	@Override

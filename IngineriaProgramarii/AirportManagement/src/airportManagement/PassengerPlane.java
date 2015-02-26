@@ -18,6 +18,16 @@ public class PassengerPlane extends Plane
 		numberOfPassengers = passengers;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PassengerPlane [numberOfPassengers=" + numberOfPassengers
+				+ ", numberOfSeats=" + numberOfSeats + ", planeID=" + planeID
+				+ ", planeType=" + planeType + "]";
+	}
+
 	public int getNumberOfPassengers()
 	{
 		return numberOfPassengers;
@@ -38,9 +48,10 @@ public class PassengerPlane extends Plane
 		return new PassengerPlane();
 	}
 	
-	private PassengerPlane()
+	public PassengerPlane()
 	{
-		setPlaneType("Passenger Plane");
+		setPlaneType("PassengerPlane");
+		setPlaneID("1");
 	}
 	
 	@Override

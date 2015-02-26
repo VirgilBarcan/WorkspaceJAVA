@@ -115,7 +115,7 @@ public class Hangar
 	public void load(Element element)
 	{
 		try 
-		{
+		{	
 			this.setID(element.getAttribute("id").getIntValue());
 			this.setCapacity(Integer.parseInt(element.getChild("capacity").getValue()));
 			
@@ -124,7 +124,6 @@ public class Hangar
 			for(int i = 0; i < aircraftsList.size(); ++i)
 			{
 				Element aircraft = (Element) aircraftsList.get(i);
-				System.out.println("Aircraft name: " + aircraft.getName());
 				
 				// In loc de a folosi compare pe string-uri, o alta metoda ar fi
 				// sa incercam sa apelam direct createHelicopter, si sa vedem ce ne returneaza ; 
@@ -138,13 +137,13 @@ public class Hangar
 					
 					aircrafts.add(helicopter);
 				}
-				else // Plane
-				{
+				else if(aircraft.getName().contains("Plane"))// Plane
+				{	
 					Plane plane = PlaneFactory.getInstance().createPlane(aircraft.getName());
 					
 					plane.load(aircraft);
 					
-					aircrafts.add(plane);
+					aircrafts.add(plane);	
 				}
 			}
 		}

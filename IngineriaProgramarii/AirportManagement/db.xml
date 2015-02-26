@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <airport>
-  <hangars size="1">
+  <hangars size="2">
     <hangar id="0">
+      <capacity>0</capacity>
+      <aircrafts size="0">
+        <PassengerPlane noOfPassengers="0" noOfSeats="0" />
+        <MilitaryPlane noOfGuns="0" noOfBombs="0" />
+        <MedicalPlane noOfMedicalKits="0" noOfPortableBeds="0" />
+        <MilitaryHelicopter noOfGuns="0" />
+        <MedicalHelicopter noOfMedicalKits="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <PassengerPlane noOfPassengers="0" noOfSeats="0" />
+        <MilitaryPlane noOfGuns="0" noOfBombs="0" />
+        <MedicalPlane noOfMedicalKits="0" noOfPortableBeds="0" />
+        <MilitaryHelicopter noOfGuns="0" />
+        <MedicalHelicopter noOfMedicalKits="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+      </aircrafts>
+    </hangar>
+    <hangar id="2">
       <capacity>0</capacity>
       <aircrafts size="0">
         <PassengerPlane noOfPassengers="0" noOfSeats="0" />
@@ -18,8 +45,25 @@
       </aircrafts>
     </hangar>
   </hangars>
-  <lanes size="1">
+  <lanes size="2">
     <lane id="0">
+      <isClear>true</isClear>
+      <aircrafts>
+        <PassengerPlane noOfPassengers="0" noOfSeats="0" />
+        <MilitaryPlane noOfGuns="0" noOfBombs="0" />
+        <MedicalPlane noOfMedicalKits="0" noOfPortableBeds="0" />
+        <MilitaryHelicopter noOfGuns="0" />
+        <MedicalHelicopter noOfMedicalKits="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+        <PassengerPlane noOfPassengers="0" noOfSeats="0" />
+        <MilitaryPlane noOfGuns="0" noOfBombs="0" />
+        <MedicalPlane noOfMedicalKits="0" noOfPortableBeds="0" />
+        <MilitaryHelicopter noOfGuns="0" />
+        <MedicalHelicopter noOfMedicalKits="0" />
+        <FireHelicopter noOfWaterBuckets="0" />
+      </aircrafts>
+    </lane>
+    <lane id="2">
       <isClear>true</isClear>
       <aircrafts>
         <PassengerPlane noOfPassengers="0" noOfSeats="0" />

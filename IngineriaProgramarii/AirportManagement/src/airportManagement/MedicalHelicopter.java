@@ -27,9 +27,9 @@ public class MedicalHelicopter extends Helicopter
 		return new MedicalHelicopter();
 	}
 	
-	private MedicalHelicopter()
+	public MedicalHelicopter()
 	{
-		setHelicopterType("Medical Helicopter");
+		setHelicopterType("MedicalHelicopter");
 	}	
 	
 	@Override

@@ -3,9 +3,13 @@ public class Main
 {
 	public static void main(String[] args) 
 	{
-		Airport p = Airport.getInstance();
+		Airport p1 = new Airport();
+		Airport p2 = new Airport();
 		
-		p.save();
-		p.load();		
+		p1.save();
+		p2.load();
+		
+		System.out.println("Second save:");
+		p2.save();
 	}
 }
