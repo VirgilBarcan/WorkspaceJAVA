@@ -3,14 +3,17 @@
  */
 package StudentProjectAllocation;
 
+import java.util.ArrayList;
+
 /**
  * @author Virgil Barcan
  *
  */
 public class Project {
+	private ArrayList<Student> assignedStudents;
 	private Integer projectID;
 	private Integer projectCapacity;
-	private Integer offeredBy;
+	
 	
 	private static int lastProjectID = 0;
 	
@@ -22,12 +25,11 @@ public class Project {
 		++Project.lastProjectID;
 	}
 	
-	public Project(Integer projectID, Integer projectCapacity, Integer offeredBy){
+	public Project(Integer projectID, Integer projectCapacity){
 		Initialize();
 		
 		this.projectID = projectID;
 		this.projectCapacity = projectCapacity;
-		this.offeredBy = offeredBy;
 		
 		if (Project.lastProjectID < projectID){
 			Project.lastProjectID = projectID;
@@ -38,8 +40,30 @@ public class Project {
 	}
 	
 	private void Initialize(){
+		assignedStudents = new ArrayList<Student>();
 		projectID = 0;
 		projectCapacity = 0;
-		offeredBy = 0;
+	}
+	
+	public void assignStudent(Student student){
+		assignedStudents.add(student);
+		--projectCapacity;
+	}
+	
+	public void deAssignStudent(Student student){
+		assignedStudents.remove(student);
+		++projectCapacity;
+	}
+	
+	public boolean isOverCapacity(){
+		if (projectCapacity < 0)
+			return true;
+		return false;
+	}
+	
+	public boolean isFull(){
+		if (projectCapacity == 0)
+			return true;
+		return false;
 	}
 }
