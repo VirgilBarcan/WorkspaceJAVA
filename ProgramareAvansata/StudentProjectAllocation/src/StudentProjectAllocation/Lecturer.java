@@ -16,7 +16,7 @@ public class Lecturer {
 	private ArrayList<Project> lecturerProjects;
 	private Hashtable<Project, ArrayList<Student>> lecturerStudentPreferences;
 	
-	private static int lastLecturerID = 0;
+	private static int lastLecturerID = 1;
 	
 	//Constructors
 	public Lecturer(){
@@ -98,6 +98,17 @@ public class Lecturer {
 		return lecturerStudentPreferences.size() - 1;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Lecturer [lecturerID=" + lecturerID + ", lecturerCapacity="
+				+ lecturerCapacity + ", lecturerProjects=" + lecturerProjects
+				+ ", lecturerStudentPreferences=" + lecturerStudentPreferences
+				+ "]";
+	}
+
 	public void deleteAllFromPreferenceListForProject(Student student, Project project){
 		int indexOfStudent;
 		indexOfStudent = lecturerStudentPreferences.get(project).indexOf(student);

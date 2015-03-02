@@ -15,7 +15,7 @@ public class Project {
 	private Integer projectCapacity;
 	
 	
-	private static int lastProjectID = 0;
+	private static int lastProjectID = 1;
 	
 	//Constructors
 	public Project(){
@@ -45,6 +45,15 @@ public class Project {
 		projectCapacity = 0;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Project [assignedStudents=" + assignedStudents + ", projectID="
+				+ projectID + ", projectCapacity=" + projectCapacity + "]";
+	}
+
 	public void assignStudent(Student student){
 		assignedStudents.add(student);
 		--projectCapacity;

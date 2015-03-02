@@ -14,7 +14,7 @@ public class Student {
 	private ArrayList<Project> studentProjectPreferences;
 	private Project studentAssignedProject;
 	
-	private static int lastStudentID = 0;
+	private static int lastStudentID = 1;
 	
 	//Constructors
 	public Student(){
@@ -74,8 +74,19 @@ public class Student {
 	
 	public void assignToProject(Project project){
 		studentAssignedProject = project;
+		System.out.println("Student " + this.studentID +" assigned to project");
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Student [studentID=" + studentID
+				+ ", studentProjectPreferences=" + studentProjectPreferences
+				+ ", studentAssignedProject=" + studentAssignedProject + "]";
+	}
+
 	public void deAssignFromProject(){
 		studentAssignedProject = null;
 	}

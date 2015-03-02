@@ -179,11 +179,17 @@ public class AllocationManager {
 			
 			System.out.println("startAllocation()");
 			
+			System.out.println("student: " + firstFreeStudent.toString());
+			
 			Project firstProjectOfStudent; //Pj
 			firstProjectOfStudent = firstFreeStudent.getFirstProjectOfStudent();
 			
+			System.out.println("firstProject: " + firstProjectOfStudent.toString());
+			
 			Lecturer lecturerWhoOffersProject; //Lk
 			lecturerWhoOffersProject = this.getLecturerWhoOffersProject(firstProjectOfStudent);
+			
+			System.out.println("lecturer: " + lecturerWhoOffersProject.toString());
 			
 			firstProjectOfStudent.assignStudent(firstFreeStudent);
 			firstFreeStudent.assignToProject(firstProjectOfStudent);
