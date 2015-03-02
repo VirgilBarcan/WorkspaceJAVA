@@ -27,8 +27,8 @@ public class Student {
 	public Student(Integer studentID, ArrayList<Project> studentProjectPreferences){
 		Initialize();
 		
-		studentID = Student.lastStudentID;
 		this.studentProjectPreferences = studentProjectPreferences;
+		this.studentID = Student.lastStudentID;
 		
 		if (Student.lastStudentID < studentID){
 			Student.lastStudentID = studentID;

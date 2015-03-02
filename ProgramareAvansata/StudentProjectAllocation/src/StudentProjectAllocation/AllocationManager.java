@@ -120,6 +120,17 @@ public class AllocationManager {
 		return null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "AllocationManager \n[students=" + students + ", lecturers="
+				+ lecturers + ", projects=" + projects + ", studentIsFree="
+				+ studentIsFree + ", lecturerIsFree=" + lecturerIsFree
+				+ ", projectIsFree=" + projectIsFree + "]";
+	}
+
 	private Lecturer getLecturerWhoOffersProject(Project project){
 		for (Lecturer lecturer : lecturers){
 			if (lecturer.isOfferingProject(project) == true){
