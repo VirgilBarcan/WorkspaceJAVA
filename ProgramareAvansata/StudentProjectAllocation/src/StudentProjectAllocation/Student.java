@@ -41,7 +41,11 @@ public class Student {
 	private void Initialize(){
 		studentID = 0;
 		studentProjectPreferences = new ArrayList<Project>();
-		studentAssignedProject = new Project();
+		studentAssignedProject = null;
+	}
+	
+	public int getStudentID(){
+		return this.studentID;
 	}
 	
 	public int getNoOfPreferences(){
@@ -69,12 +73,14 @@ public class Student {
 	}
 	
 	public boolean isAssigned(){
-		return (studentAssignedProject == null);
+		if (studentAssignedProject != null)
+			return true;
+		return false;
 	}
 	
 	public void assignToProject(Project project){
 		studentAssignedProject = project;
-		System.out.println("Student " + this.studentID +" assigned to project");
+		System.out.println("Student " + this.getStudentID() +" assigned to project " + project.getProjectID());
 	}
 	
 	/* (non-Javadoc)
@@ -82,9 +88,8 @@ public class Student {
 	 */
 	@Override
 	public String toString() {
-		return "Student [studentID=" + studentID
-				+ ", studentProjectPreferences=" + studentProjectPreferences
-				+ ", studentAssignedProject=" + studentAssignedProject + "]";
+		return "Student [studentID=" + studentID + ", studentAssignedProject=" + studentAssignedProject
+				+ ", studentProjectPreferences=" + studentProjectPreferences + "]";
 	}
 
 	public void deAssignFromProject(){

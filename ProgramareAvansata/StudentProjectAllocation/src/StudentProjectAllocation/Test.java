@@ -31,14 +31,6 @@ public class Test {
 		Student s5 = new Student(5, null);
 		Student s6 = new Student(6, null);
 		Student s7 = new Student(7, null);
-		
-		System.out.println(s1.toString());
-		System.out.println(s2.toString());
-		System.out.println(s3.toString());
-		System.out.println(s4.toString());
-		System.out.println(s5.toString());
-		System.out.println(s6.toString());
-		System.out.println(s7.toString());
 
 		Lecturer l1 = new Lecturer(1, 3, null, null);
 		Lecturer l2 = new Lecturer(2, 2, null, null);
@@ -129,6 +121,31 @@ public class Test {
 		l2.setLecturerPreferencesForProject(prefL2);
 		l3.setLecturerPreferencesForProject(prefL3);
 
+		ArrayList<Student> preferenceListL1 = new ArrayList<Student>();
+		ArrayList<Student> preferenceListL2 = new ArrayList<Student>();
+		ArrayList<Student> preferenceListL3 = new ArrayList<Student>();
+		
+		preferenceListL1.add(s7);
+		preferenceListL1.add(s4);
+		preferenceListL1.add(s1);
+		preferenceListL1.add(s3);
+		preferenceListL1.add(s2);
+		preferenceListL1.add(s5);
+		preferenceListL1.add(s6);
+		
+		preferenceListL2.add(s3);
+		preferenceListL2.add(s2);
+		preferenceListL2.add(s6);
+		preferenceListL2.add(s7);
+		preferenceListL2.add(s5);
+		
+		preferenceListL3.add(s1);
+		preferenceListL3.add(s7);
+		
+		l1.setLecturerPreferences(preferenceListL1);
+		l2.setLecturerPreferences(preferenceListL2);
+		l3.setLecturerPreferences(preferenceListL3);
+		
 		ArrayList<Project> prefStudent1 = new ArrayList<Project>();
 		ArrayList<Project> prefStudent2 = new ArrayList<Project>();
 		ArrayList<Project> prefStudent3 = new ArrayList<Project>();
@@ -151,7 +168,7 @@ public class Test {
 		prefStudent3.add(p1);
 		prefStudent3.add(p4);
 		
-		prefStudent5.add(p2);
+		prefStudent4.add(p2);
 		
 		prefStudent5.add(p1);
 		prefStudent5.add(p2);
@@ -204,11 +221,13 @@ public class Test {
 		
 		System.out.println("Begin");
 		
-		System.out.println("AllocationManager: " + allocationManager.toString());
+		//System.out.println("AllocationManager: " + allocationManager.toString());
 		
 		allocationManager.startAllocation();
 		
 		System.out.println("End");
+		
+		allocationManager.printSolution();
 	}
 
 }

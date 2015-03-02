@@ -15,6 +15,7 @@ public class Lecturer {
 	private Integer lecturerCapacity;
 	private ArrayList<Project> lecturerProjects;
 	private Hashtable<Project, ArrayList<Student>> lecturerStudentPreferences;
+	private ArrayList<Student> lecturerPreferences;
 	
 	private static int lastLecturerID = 1;
 	
@@ -47,6 +48,11 @@ public class Lecturer {
 		lecturerCapacity = 0;
 		lecturerProjects = new ArrayList<Project>();
 		lecturerStudentPreferences = new Hashtable<Project, ArrayList<Student>>();
+		this.lecturerPreferences = new ArrayList<Student>();
+	}
+	
+	public int getLecturerID(){
+		return this.lecturerID;
 	}
 	
 	public boolean isOfferingProject(Project project){
@@ -78,8 +84,12 @@ public class Lecturer {
 		return lecturerStudentPreferences.get(project);
 	}
 	
+	public ArrayList<Student> getLecturerPreferencesList(){
+		return lecturerPreferences;
+	}
+	
 	public void setLecturerPreferences(ArrayList<Student> students){
-		//add each student to its project list
+		this.lecturerPreferences = students;
 	}
 	
 	public void setLecturerPreferencesForProject(Hashtable<Project, ArrayList<Student>> preferences){
@@ -97,6 +107,41 @@ public class Lecturer {
 	public int getNoOfPreferences(){
 		return lecturerStudentPreferences.size() - 1;
 	}
+
+	public int getNoOfPreferencesForProject(Project project){
+		return lecturerStudentPreferences.get(project).size() - 1;
+	}
+	
+	public void deleteAllFromPreferenceListForProject(Student student, Project project){
+		int indexOfStudent;
+		indexOfStudent = lecturerStudentPreferences.get(project).indexOf(student);
+		
+		int noOfPreferences;
+		noOfPreferences = this.getNoOfPreferencesForProject(project);
+		
+		lecturerPreferences.remove(student);
+		
+		for (int i = indexOfStudent; i <= noOfPreferences; ++i){
+			if (lecturerStudentPreferences.get(project).get(i) != null){
+				lecturerStudentPreferences.get(project).remove(i);
+			}
+		}
+	}
+	
+	public void deleteStudentFromPreferenceListForProject(Student student, Project project){
+		lecturerPreferences.remove(student);
+		
+		lecturerStudentPreferences.get(project).remove(student);
+		
+	}
+	
+	public void setLecturerCapacity(int capacity){
+		this.lecturerCapacity = capacity;
+	}
+	
+	public int getLecturerCapacity(){
+		return this.lecturerCapacity;
+	}
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -108,16 +153,5 @@ public class Lecturer {
 				+ ", lecturerStudentPreferences=" + lecturerStudentPreferences
 				+ "]";
 	}
-
-	public void deleteAllFromPreferenceListForProject(Student student, Project project){
-		int indexOfStudent;
-		indexOfStudent = lecturerStudentPreferences.get(project).indexOf(student);
-		
-		int noOfPreferences;
-		noOfPreferences = this.getNoOfPreferences();
-		
-		for (int i = noOfPreferences; i >= indexOfStudent; --i){
-			lecturerStudentPreferences.get(project).remove(i);
-		}
-	}
+	
 }

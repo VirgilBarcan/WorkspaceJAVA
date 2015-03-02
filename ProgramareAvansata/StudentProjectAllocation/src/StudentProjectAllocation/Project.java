@@ -50,18 +50,26 @@ public class Project {
 	 */
 	@Override
 	public String toString() {
-		return "Project [assignedStudents=" + assignedStudents + ", projectID="
+		return "Project [ projectID="
 				+ projectID + ", projectCapacity=" + projectCapacity + "]";
+	}
+	
+	public int getProjectID(){
+		return this.projectID;
 	}
 
 	public void assignStudent(Student student){
 		assignedStudents.add(student);
 		--projectCapacity;
+		
+		System.out.println("Student " + student.getStudentID() + " assigned to project " + this.getProjectID());
 	}
 	
 	public void deAssignStudent(Student student){
-		assignedStudents.remove(student);
-		++projectCapacity;
+		if (assignedStudents.contains(student) == true){
+			assignedStudents.remove(student);
+			++projectCapacity;
+		}
 	}
 	
 	public boolean isOverCapacity(){

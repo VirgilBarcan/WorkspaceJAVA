@@ -155,7 +155,10 @@ public class AllocationManager {
 		lecturerStudentsPreferences = lecturer.getLecturerPreferencesForProject(project);
 		
 		int lastIndex = lecturerStudentsPreferences.size();
-		return lecturerStudentsPreferences.get(lastIndex - 1);
+		if ((lastIndex - 1) >= 0){
+			return lecturerStudentsPreferences.get(lastIndex - 1);
+		}
+		return null;
 	}
 	
 	private ArrayList<Project> getProjectsOfferedByLecturerAcceptableForStudent(Lecturer lecturer, Student student){
@@ -177,18 +180,39 @@ public class AllocationManager {
 		return result;
 	}
 	
+	private Student getWorstStudentForLecturer(Lecturer lecturer){
+		ArrayList<Project> lecturerProjects = lecturer.getLecturerProjects();
+		ArrayList<Student> lecturerPreferences = lecturer.getLecturerPreferencesList();
+		ArrayList<Student> assignedStudents = new ArrayList<Student>();
+		
+		for (Project project : lecturerProjects){
+			Student student = this.getWorstStudentForLecturerForProject(lecturer, project);
+			assignedStudents.add(student);
+		}
+		
+		for (int i = lecturerPreferences.size() - 1; i >= 0; --i){
+			for (int j = 0; j < assignedStudents.size(); ++j){
+				if (lecturerPreferences.get(i).equals(assignedStudents.get(j)) == true)
+					return assignedStudents.get(j);
+			}
+		}
+		return null;
+	}
+	
 	//StartAllocation
 	public void startAllocation(){
 		this.setStudentsFree();
 		this.setLecturersFree();
 		this.setProjectsFree();
 		
+		System.out.println("startAllocation()");
+		
 		Student firstFreeStudent; //Si
 		firstFreeStudent = this.getFirstFreeStudent();
 		
+		System.out.println("firstFreeStudent: " + firstFreeStudent.toString());
+		
 		while((firstFreeStudent != null) && (firstFreeStudent.getNoOfPreferences() != 0)){
-			
-			System.out.println("startAllocation()");
 			
 			System.out.println("student: " + firstFreeStudent.toString());
 			
@@ -204,29 +228,50 @@ public class AllocationManager {
 			
 			firstProjectOfStudent.assignStudent(firstFreeStudent);
 			firstFreeStudent.assignToProject(firstProjectOfStudent);
+			lecturerWhoOffersProject.setLecturerCapacity(lecturerWhoOffersProject.getLecturerCapacity() - 1);
+			
+			System.out.println("student: " + firstFreeStudent.toString());
 			
 			if (firstProjectOfStudent.isOverCapacity() == true){
 				Student worstStudent; //Sr
 				worstStudent = this.getWorstStudentForProject(firstProjectOfStudent);
 				
+				System.out.println("worstStudent11: " + worstStudent.toString());
+				
 				firstProjectOfStudent.deAssignStudent(worstStudent);
 				worstStudent.deAssignFromProject();
+				
+				lecturerWhoOffersProject = this.getLecturerWhoOffersProject(firstProjectOfStudent);
+				lecturerWhoOffersProject.setLecturerCapacity(lecturerWhoOffersProject.getLecturerCapacity() + 1);
+				
+				System.out.println("worstStudent12: " + worstStudent.toString());
 			}
 			else
 				if (lecturerWhoOffersProject.isOverCapacity() == true){
 					Student worstStudent; //Sr
 					Project projectOfWorstStudent;
 					
-					worstStudent = this.getWorstStudentForLecturerForProject(lecturerWhoOffersProject, firstProjectOfStudent);
+					worstStudent = this.getWorstStudentForLecturer(lecturerWhoOffersProject);
 					projectOfWorstStudent = worstStudent.getAssignedProject();
 					
-					projectOfWorstStudent.deAssignStudent(worstStudent);
+					System.out.println("worstStudent21: " + worstStudent.toString());
+					
+					if (projectOfWorstStudent != null){
+						projectOfWorstStudent.deAssignStudent(worstStudent);
+					}
 					worstStudent.deAssignFromProject();
+					
+					lecturerWhoOffersProject = this.getLecturerWhoOffersProject(firstProjectOfStudent);
+					lecturerWhoOffersProject.setLecturerCapacity(lecturerWhoOffersProject.getLecturerCapacity() + 1);
+					
+					System.out.println("worstStudent22: " + worstStudent.toString());
 				}
 			
 			if (firstProjectOfStudent.isFull() == true){
 				Student worstStudent; //Sr
 				worstStudent = this.getWorstStudentForProject(firstProjectOfStudent);
+				
+				System.out.println("worstStudent31: " + worstStudent.toString());
 				
 				ArrayList<Student> lecturerStudentsPreferences;
 				lecturerStudentsPreferences = lecturerWhoOffersProject.getLecturerPreferencesForProject(firstProjectOfStudent);
@@ -239,42 +284,73 @@ public class AllocationManager {
 					Student student;
 					student = lecturerStudentsPreferences.get(i);
 					student.deleteProjectFromStudentPreferences(firstProjectOfStudent);
+					
+					System.out.println("worstStd3 succ: " + student.toString());
 				}
 				
-				lecturerWhoOffersProject.deleteAllFromPreferenceListForProject(worstStudent, firstProjectOfStudent);
+				lecturerWhoOffersProject.deleteStudentFromPreferenceListForProject(worstStudent, firstProjectOfStudent);
 				
+				System.out.println("worstStudent32: " + worstStudent.toString());
 			}
 			
 			if (lecturerWhoOffersProject.isFull() == true){
 				Student worstStudent; //Sr
 				Project projectOfWorstStudent;
 				
-				worstStudent = this.getWorstStudentForLecturerForProject(lecturerWhoOffersProject, firstProjectOfStudent);
-				projectOfWorstStudent = worstStudent.getAssignedProject();
-				
-				ArrayList<Student> lecturerStudentsPreferences;
-				lecturerStudentsPreferences = lecturerWhoOffersProject.getLecturerPreferencesForProject(firstProjectOfStudent);
-				
-				//delete the project from all the students that are worst than worstStudent
-				int worstStudentIndex;
-				worstStudentIndex = lecturerStudentsPreferences.indexOf(worstStudent);
-				
-				for (int i = worstStudentIndex; i < lecturerStudentsPreferences.size(); ++i){
-					Student student;
-					student = lecturerStudentsPreferences.get(i);
+				worstStudent = this.getWorstStudentForLecturer(lecturerWhoOffersProject);
+				if (worstStudent != null){
+					projectOfWorstStudent = worstStudent.getAssignedProject();
+					System.out.println("worstStudent41: " + worstStudent.toString());
 					
-					ArrayList<Project> projects = getProjectsOfferedByLecturerAcceptableForStudent(lecturerWhoOffersProject, student);
+
+					ArrayList<Student> lecturerStudentsPreferences;
+					lecturerStudentsPreferences = lecturerWhoOffersProject.getLecturerPreferencesList();
 					
-					for (Project project : projects){
-						student.deleteProjectFromStudentPreferences(project);
+					//delete the project from all the students that are worst than worstStudent
+					int worstStudentIndex;
+					worstStudentIndex = lecturerStudentsPreferences.indexOf(worstStudent);
+					
+					for (int i = worstStudentIndex; i < lecturerStudentsPreferences.size(); ++i){
+						Student student;
+						student = lecturerStudentsPreferences.get(i);
+						
+						ArrayList<Project> projects = getProjectsOfferedByLecturerAcceptableForStudent(lecturerWhoOffersProject, student);
+						
+						for (Project project : projects){
+							student.deleteProjectFromStudentPreferences(project);
+							lecturerWhoOffersProject.deleteStudentFromPreferenceListForProject(student, project);
+						}
+						
+						System.out.println("worstStd4 succ: " + student.toString());
+						
 					}
 					
+					//lecturerWhoOffersProject.deleteAllFromPreferenceListForProject(worstStudent, firstProjectOfStudent);
+					
+					System.out.println("worstStudent42: " + worstStudent.toString());
+				
 				}
-				
-				lecturerWhoOffersProject.deleteAllFromPreferenceListForProject(worstStudent, firstProjectOfStudent);
-				
+				else{
+					System.out.println("worstStudent41: null");
+				}
+					
 			}
 			firstFreeStudent = this.getFirstFreeStudent();
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
+	public void printSolution(){
+		for (Student student : students){
+			System.out.println(student);
 		}
 	}
 	
