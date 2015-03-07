@@ -29,6 +29,7 @@ public class MovieCollectionTest {
 		System.out.println(theModel.getCategoriesList().get(0).getCategoryName());
 		
 		theController.run();
+		theView.showMovieCollection();
 		
 		System.out.println("Bye!");
 	}

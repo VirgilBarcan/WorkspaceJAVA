@@ -15,7 +15,7 @@ public class Movie {
 	private String title;
 	private String imdbID;
 	private ArrayList<Category> categories;
-	private Date releaseDate;
+	private String releaseDate;
 	private Double rating;
 	private String shortDescription;
 	
@@ -37,7 +37,7 @@ public class Movie {
 	 * @param rating
 	 * @param shortDescription
 	 */
-	public Movie(String title, String imdbID, ArrayList<Category> categories, Date releaseDate, Double rating, String shortDescription){
+	public Movie(String title, String imdbID, ArrayList<Category> categories, String releaseDate, Double rating, String shortDescription){
 		initialize();
 		
 		this.title = title;
@@ -56,7 +56,7 @@ public class Movie {
 		title = new String();
 		imdbID = new String();
 		categories = new ArrayList<Category>();
-		releaseDate = new Date();
+		releaseDate = new String();
 		rating = 0.0;
 		shortDescription = new String();
 	}
@@ -113,7 +113,7 @@ public class Movie {
 	/**
 	 * @return the releaseDate
 	 */
-	public Date getReleaseDate() {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
 
@@ -121,7 +121,7 @@ public class Movie {
 	/**
 	 * @param releaseDate the releaseDate to set
 	 */
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 

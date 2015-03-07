@@ -54,6 +54,50 @@ public class View {
 		System.out.println(categories.get(categories.size() - 1).getCategoryName());
 	}
 	
+	public void showMovieCollection(){
+		
+		ArrayList<Movie> movieList = movieCollection.getMovieList();
+		
+		System.out.println("Movie Collection");
+		
+		for (Movie movie : movieList){
+			System.out.println("Title: " + movie.getTitle());
+			System.out.println("IMDB ID: " + movie.getImdbID());
+			
+			ArrayList<Category> categories = movie.getCategories();
+			
+			System.out.print("Categories: ");
+			for (Category category : categories){
+				System.out.print(category.getCategoryName() + " ");
+			}
+			System.out.println();
+			System.out.println("Release Date: " + movie.getReleaseDate());
+			System.out.println("Rating: " + movie.getRating());
+			System.out.println("Short Description: " + movie.getShortDescription());
+			
+			System.out.println();
+		}
+		
+	}
+	
+	public void showMovie(Movie movie){
+		System.out.println("Title: " + movie.getTitle());
+		System.out.println("IMDB ID: " + movie.getImdbID());
+		
+		ArrayList<Category> categories = movie.getCategories();
+		
+		System.out.print("Categories: ");
+		for (Category category : categories){
+			System.out.print(category.getCategoryName() + " ");
+		}
+		System.out.println();
+		System.out.println("Release Date: " + movie.getReleaseDate());
+		System.out.println("Rating: " + movie.getRating());
+		System.out.println("Short Description: " + movie.getShortDescription());
+		
+		System.out.println();
+	}
+	
 	public String getUserInput(){
 		String inputFromUser = new String();
 		
