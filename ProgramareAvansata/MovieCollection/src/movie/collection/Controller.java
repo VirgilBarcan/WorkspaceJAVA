@@ -67,9 +67,9 @@ public class Controller {
 				} catch (SameTitleMovieException sameTitle) {
 					System.out.println("SameTitleMovieException: "
 							+ sameTitle.getMessage());
-					//inputFromUser = "ADD";
+					// inputFromUser = "ADD";
 				}
-				
+
 				if (inputFromUser.toUpperCase().equals("EDIT") == true) {
 					inputEditMovie();
 				}

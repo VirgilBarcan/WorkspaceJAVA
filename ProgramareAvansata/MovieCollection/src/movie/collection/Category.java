@@ -3,24 +3,26 @@
  */
 package movie.collection;
 
+import java.io.Serializable;
+
 /**
  * @author Virgil Barcan
  *
  */
-public class Category {
+public class Category implements Serializable {
 
 	private String categoryName;
 	private String categoryDescription;
-	
-	//implicit constructor
+
+	// implicit constructor
 	/**
 	 * 
 	 */
-	public Category(){
+	public Category() {
 		initialize();
 	}
-	
-	//explicit constructors
+
+	// explicit constructors
 	/**
 	 * @param categoryName
 	 * @param categoryDescription
@@ -31,11 +33,10 @@ public class Category {
 		this.categoryDescription = categoryDescription;
 	}
 
-	
 	/**
 	 * 
 	 */
-	private void initialize(){
+	private void initialize() {
 		categoryName = new String();
 		categoryDescription = new String();
 	}
@@ -48,7 +49,8 @@ public class Category {
 	}
 
 	/**
-	 * @param categoryName the categoryName to set
+	 * @param categoryName
+	 *            the categoryName to set
 	 */
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
@@ -62,10 +64,11 @@ public class Category {
 	}
 
 	/**
-	 * @param categoryDescription the categoryDescription to set
+	 * @param categoryDescription
+	 *            the categoryDescription to set
 	 */
 	public void setCategoryDescription(String categoryDescription) {
 		this.categoryDescription = categoryDescription;
 	}
-	
+
 }

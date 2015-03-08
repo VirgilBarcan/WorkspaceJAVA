@@ -5,30 +5,30 @@ package movie.collection;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.io.Serializable;
 
 /**
  * @author Virgil Barcan
  *
  */
-public class Movie {
-	
+public class Movie implements Serializable {
+
 	private String title;
 	private String imdbID;
 	private ArrayList<Category> categories;
 	private String releaseDate;
 	private Double rating;
 	private String shortDescription;
-	
-	
-	//implicit constructor
+
+	// implicit constructor
 	/**
 	 * 
 	 */
-	public Movie(){
+	public Movie() {
 		initialize();
 	}
-	
-	//explicit constructors
+
+	// explicit constructors
 	/**
 	 * @param title
 	 * @param imdbID
@@ -37,9 +37,10 @@ public class Movie {
 	 * @param rating
 	 * @param shortDescription
 	 */
-	public Movie(String title, String imdbID, ArrayList<Category> categories, String releaseDate, Double rating, String shortDescription){
+	public Movie(String title, String imdbID, ArrayList<Category> categories,
+			String releaseDate, Double rating, String shortDescription) {
 		initialize();
-		
+
 		this.title = title;
 		this.imdbID = imdbID;
 		this.categories = categories;
@@ -47,12 +48,11 @@ public class Movie {
 		this.rating = rating;
 		this.shortDescription = shortDescription;
 	}
-	
-	
+
 	/**
 	 * 
 	 */
-	private void initialize(){
+	private void initialize() {
 		title = new String();
 		imdbID = new String();
 		categories = new ArrayList<Category>();
@@ -61,7 +61,6 @@ public class Movie {
 		shortDescription = new String();
 	}
 
-
 	/**
 	 * @return the title
 	 */
@@ -69,14 +68,13 @@ public class Movie {
 		return title;
 	}
 
-
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 
 	/**
 	 * @return the imdbID
@@ -85,14 +83,13 @@ public class Movie {
 		return imdbID;
 	}
 
-
 	/**
-	 * @param imdbID the imdbID to set
+	 * @param imdbID
+	 *            the imdbID to set
 	 */
 	public void setImdbID(String imdbID) {
 		this.imdbID = imdbID;
 	}
-
 
 	/**
 	 * @return the categories
@@ -101,22 +98,22 @@ public class Movie {
 		return categories;
 	}
 
-
 	/**
-	 * @param categories the categories to set
+	 * @param categories
+	 *            the categories to set
 	 */
 	public void setCategories(ArrayList<Category> categories) {
 		this.categories = categories;
 	}
 
-
 	/**
-	 * @param category the category to add to the list of categories
+	 * @param category
+	 *            the category to add to the list of categories
 	 */
-	public void addCategory(Category category){
+	public void addCategory(Category category) {
 		this.categories.add(category);
 	}
-	
+
 	/**
 	 * @return the releaseDate
 	 */
@@ -124,14 +121,13 @@ public class Movie {
 		return releaseDate;
 	}
 
-
 	/**
-	 * @param releaseDate the releaseDate to set
+	 * @param releaseDate
+	 *            the releaseDate to set
 	 */
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-
 
 	/**
 	 * @return the rating
@@ -140,14 +136,13 @@ public class Movie {
 		return rating;
 	}
 
-
 	/**
-	 * @param rating the rating to set
+	 * @param rating
+	 *            the rating to set
 	 */
 	public void setRating(Double rating) {
 		this.rating = rating;
 	}
-
 
 	/**
 	 * @return the shortDescription
@@ -156,13 +151,12 @@ public class Movie {
 		return shortDescription;
 	}
 
-
 	/**
-	 * @param shortDescription the shortDescription to set
+	 * @param shortDescription
+	 *            the shortDescription to set
 	 */
 	public void setShortDescription(String shortDescription) {
 		this.shortDescription = shortDescription;
 	}
-	
-	
+
 }

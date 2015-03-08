@@ -4,12 +4,13 @@
 package movie.collection;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  * @author Virgil Barcan
  *
  */
-public class MovieCollection {
+public class MovieCollection implements Serializable {
 
 	private ArrayList<Movie> movieList;
 	private ArrayList<Category> categoriesList;
