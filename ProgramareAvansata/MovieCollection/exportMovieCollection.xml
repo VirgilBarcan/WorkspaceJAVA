@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movieCollection>
+  <movies size="2">
+    <movie>
+      <imbdID>tt0120737</imbdID>
+      <title>Lord of the Rings 1</title>
+      <releaseDate>01-02-2001</releaseDate>
+      <rating>9.0</rating>
+      <shortDescription>The best movie ever made! Along with all of the series' movies..</shortDescription>
+      <categories size="2">
+        <category name="Adventure" description="" />
+        <category name="Mistery" description="" />
+      </categories>
+    </movie>
+    <movie>
+      <imbdID>tt0903624</imbdID>
+      <title>The Hobbit 1</title>
+      <releaseDate>14-12-2012</releaseDate>
+      <rating>8.0</rating>
+      <shortDescription>Also the best movie ever made..</shortDescription>
+      <categories size="2">
+        <category name="Adventure" description="" />
+        <category name="Mistery" description="" />
+      </categories>
+    </movie>
+  </movies>
+</movieCollection>
+

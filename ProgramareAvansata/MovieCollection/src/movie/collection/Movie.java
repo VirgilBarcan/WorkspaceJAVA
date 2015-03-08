@@ -111,6 +111,13 @@ public class Movie {
 
 
 	/**
+	 * @param category the category to add to the list of categories
+	 */
+	public void addCategory(Category category){
+		this.categories.add(category);
+	}
+	
+	/**
 	 * @return the releaseDate
 	 */
 	public String getReleaseDate() {
