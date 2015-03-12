@@ -3,6 +3,17 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
-	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/SkyDrive/Scoala/An2/Sem2/IngineriaProgramarii/Laborator1/jdom/build/jdom-1.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/SkyDrive/Scoala/An2/Sem2/IngineriaProgramarii/Laborator/Laborator1/jdom/build/jdom-1.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/poi-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/poi-examples-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/poi-excelant-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/poi-ooxml-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/poi-ooxml-schemas-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/poi-scratchpad-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/ooxml-lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/lib/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/lib/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Virgil Barcan/Downloads/Programe Facultate/poi-3.11/lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

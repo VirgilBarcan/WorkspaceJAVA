@@ -159,4 +159,14 @@ public class Movie implements Serializable {
 		this.shortDescription = shortDescription;
 	}
 
+	public String getCategoriesAsString(){
+		String result = new String();
+		
+		for (int i = 0; i < this.categories.size(); ++i){
+			result += categories.get(i).getCategoryName() + " ";
+		}
+		
+		return result;
+	}
+	
 }

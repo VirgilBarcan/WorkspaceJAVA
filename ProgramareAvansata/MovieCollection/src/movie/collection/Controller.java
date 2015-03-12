@@ -4,8 +4,8 @@
 package movie.collection;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,6 +17,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+
 import java.util.List;
 
 /**
@@ -58,8 +59,6 @@ public class Controller {
 
 				inputFromUser = theView.getUserInput();
 
-				// TODO import and export file
-
 				try {
 					if (inputFromUser.toUpperCase().equals("ADD") == true) {
 						inputAddMovie();
@@ -99,6 +98,13 @@ public class Controller {
 					theView.showMessage("Export Collection> Give the name of the file (and the path, if you want it in a specific place): ");
 					filePath = theView.getUserInput();
 					inputExportCollection(filePath);
+				}
+				
+				if ((inputFromUser.toUpperCase().equals("GENERATE REPORT") == true) || (inputFromUser.toUpperCase().equals("REPORT") == true) || (inputFromUser.toUpperCase().equals("GENERATE") == true)){
+					String filePath;
+					theView.showMessage("Generate Report> Give the name of the file (and the path, if you want it in a specific place): ");
+					filePath = theView.getUserInput();
+					inputGenerateReport(filePath);
 				}
 
 			} while (inputFromUser.toUpperCase().equals("EXIT") == false);
@@ -308,8 +314,7 @@ public class Controller {
 		}
 	}
 
-	private void inputImportCollection(String filePath) throws JDOMException,
-			BadFileFormatException {
+	private void inputImportCollection(String filePath) throws JDOMException, BadFileFormatException {
 		SAXBuilder fileBuilder = new SAXBuilder();
 
 		File importFile = new File(filePath);
@@ -381,6 +386,58 @@ public class Controller {
 		}
 	}
 
+	private void inputGenerateReport(String filePath){
+		
+		ArrayList<Movie> moviesSortedByTitle = new ArrayList<Movie>();
+		ArrayList<Movie> moviesSortedByRating = new ArrayList<Movie>();
+		ArrayList<Movie> moviesSortedByReleaseDate = new ArrayList<Movie>();
+		
+		moviesSortedByTitle = theModel.getMovieList();
+		moviesSortedByRating = theModel.getMovieList();
+		moviesSortedByReleaseDate = theModel.getMovieList();
+		
+		moviesSortedByTitle.sort(new Comparator<Movie>(){
+			public int compare(Movie m1, Movie m2){
+				return m1.getTitle().compareTo(m2.getTitle());
+			}
+		});
+		
+		moviesSortedByRating.sort(new Comparator<Movie>(){
+			public int compare(Movie m1, Movie m2){
+				if (m1.getRating() < m2.getRating()){
+					return 1;
+				}
+				return 0;
+			}
+		});
+		
+		moviesSortedByReleaseDate.sort(new Comparator<Movie>(){
+			public int compare(Movie m1, Movie m2){
+				String[] release1 = m1.getReleaseDate().split("-");
+				String[] release2 = m2.getReleaseDate().split("-");
+				int day1 = Integer.parseInt(release1[0]);
+				int day2 = Integer.parseInt(release2[0]);
+				int mon1 = Integer.parseInt(release1[1]);
+				int mon2 = Integer.parseInt(release2[1]);
+				int yr1 = Integer.parseInt(release1[2]);
+				int yr2 = Integer.parseInt(release2[2]);
+				
+				Date d1 = new Date(day1, mon1, yr1);
+				Date d2 = new Date(day2, mon2, yr2);
+				
+				return d1.compareTo(d2);
+			}
+		});
+		
+		
+		for (int i = 0; i < moviesSortedByReleaseDate.size(); ++i)
+			System.out.println(moviesSortedByReleaseDate.get(i).getTitle() + " " + moviesSortedByReleaseDate.get(i).getReleaseDate());
+		
+		ReportGenerator reportGenerator = new ReportGenerator(moviesSortedByTitle, moviesSortedByRating, moviesSortedByReleaseDate);
+		reportGenerator.generateReport(filePath);
+		
+	}
+	
 	/**
 	 * @param title
 	 *            the title that we want to check

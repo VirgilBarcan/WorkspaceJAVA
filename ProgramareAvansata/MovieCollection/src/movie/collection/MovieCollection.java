@@ -4,6 +4,7 @@
 package movie.collection;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.io.Serializable;
 
 /**
@@ -156,6 +157,15 @@ public class MovieCollection implements Serializable {
 		}
 
 		return false;
+	}
+
+	public ArrayList<Movie> sortBy(Comparator typeOfSort){
+		ArrayList<Movie> sortedMovies = new ArrayList<Movie>();
+		
+		sortedMovies = this.getMovieList();
+		sortedMovies.sort(typeOfSort);
+		
+		return sortedMovies;
 	}
 
 }

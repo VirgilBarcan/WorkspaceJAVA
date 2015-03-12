@@ -35,6 +35,7 @@ public class View {
 		System.out.println(MenuItems.DELETE);
 		System.out.println(MenuItems.IMPORT);
 		System.out.println(MenuItems.EXPORT);
+		System.out.println(MenuItems.REPORT);
 		System.out.println(MenuItems.EXIT);
 
 	}
@@ -148,6 +149,12 @@ public class View {
 			// export collection
 			public String toString() {
 				return "Export Movie Collection";
+			}
+		},
+		REPORT {
+			//generate xls report
+			public String toString() {
+				return "Generate Report";
 			}
 		},
 		EXIT {
