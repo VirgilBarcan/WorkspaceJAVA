@@ -25,7 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * @author Virgil Barcan
- *
+ * @author Alex Munteanu
  */
 public class ReportGenerator {
 
@@ -51,7 +51,9 @@ public class ReportGenerator {
 	}
 
 
-
+	/**
+	 * @param filePath the file path to the file where the report will be placed
+	 */
 	public void generateReport(String filePath){
 		Workbook workbook;
 		try {
@@ -198,6 +200,10 @@ public class ReportGenerator {
 		        
 	}
 	
+	/**
+	 * @param wb a workbook for which the styles of the cells are being defined
+	 * @return a map which maps each style with a XSSFCellStyle, which can be used to set the style for a specific cell
+	 */
 	private static Map<String, XSSFCellStyle> createStyles(Workbook wb){
         Map<String, XSSFCellStyle> styles = new HashMap<String, XSSFCellStyle>();
         DataFormat df = wb.createDataFormat();
@@ -302,6 +308,10 @@ public class ReportGenerator {
         return styles;
     }
 
+	/**
+	 * @param wb a workbook
+	 * @return a XSSFCellStyle which has in int the border style of the cell
+	 */
     private static XSSFCellStyle createBorderedStyle(Workbook wb){
         XSSFCellStyle style = (XSSFCellStyle) wb.createCellStyle();
         style.setBorderRight(XSSFCellStyle.BORDER_THIN);

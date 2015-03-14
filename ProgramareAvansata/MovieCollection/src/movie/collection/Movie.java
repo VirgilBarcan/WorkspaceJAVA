@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author Virgil Barcan
- *
+ * @author Alex Munteanu
  */
 public class Movie implements Serializable {
 
@@ -168,5 +168,57 @@ public class Movie implements Serializable {
 		
 		return result;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((imdbID == null) ? 0 : imdbID.hashCode());
+		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
+		result = prime * result
+				+ ((releaseDate == null) ? 0 : releaseDate.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Movie))
+			return false;
+		Movie other = (Movie) obj;
+		if (imdbID == null) {
+			if (other.imdbID != null)
+				return false;
+		} else if (!imdbID.equals(other.imdbID))
+			return false;
+		if (rating == null) {
+			if (other.rating != null)
+				return false;
+		} else if (!rating.equals(other.rating))
+			return false;
+		if (releaseDate == null) {
+			if (other.releaseDate != null)
+				return false;
+		} else if (!releaseDate.equals(other.releaseDate))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+	
+	
 	
 }

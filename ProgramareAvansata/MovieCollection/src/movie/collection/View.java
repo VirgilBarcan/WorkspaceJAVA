@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  * @author Virgil Barcan
- *
+ * @author Alex Munteanu
  */
 
 public class View {
@@ -16,6 +16,10 @@ public class View {
 	private MovieCollection movieCollection; // model in the MVC pattern
 	private Scanner input;
 
+	/**
+	 * 
+	 * @param movieCollection the model for the view
+	 */
 	public View(MovieCollection movieCollection) {
 		this.movieCollection = movieCollection;
 
@@ -27,6 +31,9 @@ public class View {
 		}
 	}
 
+	/**
+	 * the function that prints the menu for the application
+	 */
 	public void showMenu() {
 
 		System.out.println("Menu");
@@ -36,16 +43,26 @@ public class View {
 		System.out.println(MenuItems.IMPORT);
 		System.out.println(MenuItems.EXPORT);
 		System.out.println(MenuItems.REPORT);
+		System.out.println(MenuItems.SERIALIZE);
+		System.out.println(MenuItems.DESERIALIZE);
 		System.out.println(MenuItems.EXIT);
 
 	}
 
+	/**
+	 * 
+	 * @param messageToShow the message to print to the user
+	 */
 	public void showMessage(String messageToShow) {
 
 		System.out.println(messageToShow); // could be Add Movie, Edit Movie...
 
 	}
 
+	/**
+	 * 
+	 * @param categories the categories inserted in the application
+	 */
 	public void showCategories(ArrayList<Category> categories) {
 		this.showMessage("Possible categories to choose from:");
 
@@ -56,6 +73,10 @@ public class View {
 				.getCategoryName());
 	}
 
+	/**
+	 * 
+	 * @param movieCollection the model to be shown
+	 */
 	public void showMovieCollection(MovieCollection movieCollection) {
 
 		ArrayList<Movie> movieList = movieCollection.getMovieList();
@@ -83,6 +104,10 @@ public class View {
 
 	}
 
+	/**
+	 * 
+	 * @param movie the movie to be shown
+	 */
 	public void showMovie(Movie movie) {
 		System.out.println("Title: " + movie.getTitle());
 		System.out.println("IMDB ID: " + movie.getImdbID());
@@ -101,6 +126,10 @@ public class View {
 		System.out.println();
 	}
 
+	/**
+	 * 
+	 * @return the input from the user
+	 */
 	public String getUserInput() {
 		String inputFromUser = new String();
 
@@ -114,6 +143,12 @@ public class View {
 		return inputFromUser;
 	}
 
+	/**
+	 * 
+	 * @author Virgil Barcan
+	 *
+	 * An enum which stores all the possible menu items
+	 */
 	private enum MenuItems {
 		ADD {
 			// add movie to collection
@@ -155,6 +190,18 @@ public class View {
 			//generate xls report
 			public String toString() {
 				return "Generate Report";
+			}
+		},
+		SERIALIZE {
+			//generate the serialized objects
+			public String toString() {
+				return "Serialize";
+			}
+		},
+		DESERIALIZE {
+			//recreate the objects from the serialized ones
+			public String toString() {
+				return "Deserialize";
 			}
 		},
 		EXIT {

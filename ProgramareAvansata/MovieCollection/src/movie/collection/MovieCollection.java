@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author Virgil Barcan
- *
+ * @author Alex Munteanu
  */
 public class MovieCollection implements Serializable {
 

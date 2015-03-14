@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 
 /**
  * @author Virgil Barcan
- *
+ * @author Alex Munteanu
  */
 public class MovieCollectionTest {
 
@@ -33,53 +33,8 @@ public class MovieCollectionTest {
 		theModel.addCategory(category1);
 		theModel.addCategory(category2);
 
-		System.out.println(theModel.getCategoriesList().get(0)
-				.getCategoryName());
-
 		theController.run();
 		// theView.showMovieCollection();
-
-		// serialize objects
-		try {
-			
-			System.out.println("Serializing the movie collection");
-			
-			FileOutputStream output;
-			output = new FileOutputStream("serializareObiecte.ser");
-			ObjectOutputStream objOut = new ObjectOutputStream(output);
-
-			objOut.writeObject(theModel);
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		// deserialize objects
-		try {
-			
-			System.out.println("Deserializing the movie collection");
-			
-			FileInputStream output;
-			output = new FileInputStream("serializareObiecte.ser");
-			ObjectInputStream objIn = new ObjectInputStream(output);
-
-			MovieCollection model = (MovieCollection) objIn.readObject(); 
-			
-			theView.showMovieCollection(model);
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e){
-			e.printStackTrace();
-		}
 
 		System.out.println("Bye!");
 	}

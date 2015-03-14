@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import org.jdom.Attribute;
 import org.jdom.Document;
@@ -22,7 +27,7 @@ import java.util.List;
 
 /**
  * @author Virgil Barcan
- *
+ * @author Alex Munteanu
  */
 public class Controller {
 
@@ -42,11 +47,17 @@ public class Controller {
 		this.theView = theView;
 	}
 
+	/**
+	 * the function that initializes the data
+	 */
 	private void initialize() {
 		theModel = new MovieCollection();
 		theView = new View(theModel);
 	}
 
+	/**
+	 * the function where all the interaction with the user is done
+	 */
 	public void run() {
 
 		String inputFromUser;
@@ -66,7 +77,6 @@ public class Controller {
 				} catch (SameTitleMovieException sameTitle) {
 					System.out.println("SameTitleMovieException: "
 							+ sameTitle.getMessage());
-					// inputFromUser = "ADD";
 				}
 
 				if (inputFromUser.toUpperCase().equals("EDIT") == true) {
@@ -106,6 +116,19 @@ public class Controller {
 					filePath = theView.getUserInput();
 					inputGenerateReport(filePath);
 				}
+				
+				if (inputFromUser.toUpperCase().equals("SERIALIZE") == true){
+					String filePath;
+					theView.showMessage("Serialize> Give the name of the file (and the path, if you want it in a specific place): ");
+					filePath = theView.getUserInput();
+					inputSerialize(filePath);
+				}
+				if (inputFromUser.toUpperCase().equals("DESERIALIZE") == true){
+					String filePath;
+					theView.showMessage("Deserialize> Give the path to the file: ");
+					filePath = theView.getUserInput();
+					inputDeserialize(filePath);
+				}
 
 			} while (inputFromUser.toUpperCase().equals("EXIT") == false);
 		} catch (BadFileFormatException badFile) {
@@ -114,6 +137,9 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * the function that handles the add of a new movie
+	 */
 	private void inputAddMovie() {
 		String title;
 		String imdbID;
@@ -189,6 +215,9 @@ public class Controller {
 		theModel.addMovie(movieToAdd);
 	}
 
+	/**
+	 * the function that handles the edit of a movie
+	 */	
 	private void inputEditMovie() {
 		String selectTitle;
 
@@ -214,7 +243,10 @@ public class Controller {
 
 		}
 	}
-
+	
+	/**
+	 * the function that handles the deletion of a movie
+	 */	
 	private void inputDeleteMovie() {
 		String selectTitle;
 
@@ -229,6 +261,9 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * the function that handles the search of a movie
+	 */
 	private void inputSearchMovie() {
 		String selectTitle;
 
@@ -243,6 +278,10 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * 
+	 * @param filePath the file path to where the .xml file would be created
+	 */
 	private void inputExportCollection(String filePath) {
 		File exportFile = new File(filePath);
 		// if(file.isFile()) // Check if exists & is file
@@ -314,6 +353,11 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * @param filePath the file path to where the .xml file from which the import is being done
+	 * @throws JDOMException
+	 * @throws BadFileFormatException
+	 */
 	private void inputImportCollection(String filePath) throws JDOMException, BadFileFormatException {
 		SAXBuilder fileBuilder = new SAXBuilder();
 
@@ -386,6 +430,10 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * 
+	 * @param filePath to where the .xls file is saved
+	 */
 	private void inputGenerateReport(String filePath){
 		
 		ArrayList<Movie> moviesSortedByTitle = new ArrayList<Movie>();
@@ -436,6 +484,50 @@ public class Controller {
 		ReportGenerator reportGenerator = new ReportGenerator(moviesSortedByTitle, moviesSortedByRating, moviesSortedByReleaseDate);
 		reportGenerator.generateReport(filePath);
 		
+	}
+	
+	/**
+	 * 
+	 * @param filePath to where the .ser file is saved
+	 */
+	private void inputSerialize(String filePath){
+		try {
+			FileOutputStream output;
+			output = new FileOutputStream(filePath);
+			ObjectOutputStream objOut = new ObjectOutputStream(output);
+
+			objOut.writeObject(theModel);
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * 
+	 * @param filePath to where the input .ser file from which the deserialize is being done
+	 */
+	private void inputDeserialize(String filePath){
+		try {	
+			FileInputStream output;
+			output = new FileInputStream(filePath);
+			ObjectInputStream objIn = new ObjectInputStream(output);
+
+			MovieCollection model = (MovieCollection) objIn.readObject(); 
+			
+			theView.showMovieCollection(model);
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e){
+			e.printStackTrace();
+		}
+
 	}
 	
 	/**
