@@ -154,7 +154,7 @@ public class Controller {
 		theView.showMessage("Add Movie> Title: ");
 		title = theView.getUserInput();
 
-		while (checkTitle(title) == true) {
+		while (checkTitle(title) == false) {
 			theView.showMessage("Add Movie> There exists a movie with the same title! Insert another title");
 			theView.showMessage("Add Movie> Title: ");
 			title = theView.getUserInput();
@@ -537,7 +537,8 @@ public class Controller {
 	 */
 	private boolean checkTitle(String title) throws SameTitleMovieException {
 		if (theModel.existsWithTitle(title) == true) {
-			throw new SameTitleMovieException();
+			return false;
+			//throw new SameTitleMovieException();
 		} else
 			return true;
 	}
